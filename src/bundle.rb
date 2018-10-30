@@ -1,6 +1,8 @@
 require 'twitch-api'
 require 'yaml'
 require 'date'
+require 'open-uri'
+require 'nokogiri'
 
 puts("start")
 
@@ -18,7 +20,17 @@ result = client.get_clips({
 
 result.data.each{ |clip|
     puts(clip.url)
-    puts(clip.embed_url)
+    charset = nil
+    html = open(clip.url) do |f|
+        charset = f.charset # 文字種別を取得
+        f.read # htmlを読み込んで変数htmlに渡す
+    end
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    puts(doc)
+    doc.xpath("//video").each{|t|
+        puts(t)
+    }
+
 }
 
 puts("end")
