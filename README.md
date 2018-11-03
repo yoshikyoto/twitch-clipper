@@ -5,3 +5,6 @@
 ```
 bundle install
 ```
+
+### 適当にusernameをuseridに変換
+
