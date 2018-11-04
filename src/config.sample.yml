@@ -2,3 +2,9 @@ twitch:
   client_id: client_id
 video:
   download_dir: ../resource
+broadcasters:
+  - riotgamesjp  # RiotGames JP 公式
+  - silica_gl  # シリカゲル兄貴
+  - alfrea  # らいじん
+  - sutanmi  # スタンミ
+  - kabeosyama  # かべお
