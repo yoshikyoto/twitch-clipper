@@ -49,7 +49,6 @@ broadcasters.each { |broadcaster_name|
     })
 
     # クリップをダウンロード
-    clip_rank = 1
     result.data.each{ |clip|
         clipr = Twitch::Clipr::Client.new()
         download_url = clipr.get(clip.url)
@@ -60,7 +59,6 @@ broadcasters.each { |broadcaster_name|
         download_path = 
             download_dir + "/" + 
             broadcaster_name + "-" + 
-            clip_rank.to_s + "-" + 
             clip.view_count.to_s + "views-" +
             clip.id + ".mp4"
         clipr.download(download_url, download_path)
