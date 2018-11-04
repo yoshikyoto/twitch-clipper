@@ -9,7 +9,7 @@ GEM
     twitch-api (0.3.0)
       faraday (>= 0.12.2)
       faraday_middleware (~> 0.12)
-    twitch-clipr (0.1.0)
+    twitch-clipr (1.0.0)
       faraday (~> 0.12)
 
 PLATFORMS
@@ -17,7 +17,7 @@ PLATFORMS
 
 DEPENDENCIES
   twitch-api
-  twitch-clipr
+  twitch-clipr (~> 1.0.0)
 
 BUNDLED WITH
    1.16.2

@@ -1,2 +1,4 @@
 twitch:
   client_id: client_id
+video:
+  download_dir: ../resource
