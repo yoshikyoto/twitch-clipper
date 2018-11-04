@@ -14,7 +14,6 @@ if is_dry_run
   puts "dry run"
 end
 
-
 config = YAML.load_file("config.yml")
 download_dir = config["video"]["download_dir"] + "/" + now
 Dir.mkdir(download_dir, 0755)
@@ -24,6 +23,7 @@ twitch = Twitch::Client.new(client_id: config["twitch"]["client_id"])
 
 broadcaster_name = "riotgamesjp"
 
+# broadcaster単位でのダウンロード
 broadcasters = config["broadcasters"]
 broadcasters.each { |broadcaster_name|
     # ユーザー名からユーザーIDを引く
@@ -34,7 +34,7 @@ broadcasters.each { |broadcaster_name|
 
     # dry-runの場合ユーザーIDを引いて終わり
     if is_dry_run
-        continue
+        next
     end
 
     # 1週間前
@@ -61,7 +61,7 @@ broadcasters.each { |broadcaster_name|
             download_dir + "/" + 
             broadcaster_name + "-" + 
             clip_rank.to_s + "-" + 
-            clip.view_count.to_s + "views-"
+            clip.view_count.to_s + "views-" +
             clip.id + ".mp4"
         clipr.download(download_url, download_path)
 
