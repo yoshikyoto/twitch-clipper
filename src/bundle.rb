@@ -21,7 +21,10 @@ Dir.mkdir(download_dir, 0755)
 # twitch api clientの初期化
 twitch = Twitch::Client.new(client_id: config["twitch"]["client_id"])
 
-broadcaster_name = "riotgamesjp"
+# クリップ集計期間
+today = Date.today
+started_at = today - 14
+ended_at = today - 7
 
 # broadcaster単位でのダウンロード
 broadcasters = config["broadcasters"]
@@ -37,14 +40,11 @@ broadcasters.each { |broadcaster_name|
         next
     end
 
-    # 1週間前
-    today = Date.today
-    a_week_ago = today - 7
-
     # 直近1週間のclipを視聴数順に取得
     result = twitch.get_clips({
         broadcaster_id: user.id,
-        started_at: a_week_ago.rfc3339,
+        started_at: started_at.rfc3339,
+        ended_at: ended_at.rfc3339,
         first: 3,
     })
 
