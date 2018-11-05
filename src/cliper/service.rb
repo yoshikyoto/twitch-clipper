@@ -21,11 +21,6 @@ module Cliper
       # ダウンロード先のディレクトリを作成
       download_dir = @config["video"]["download_dir"] + "/" + now
       Dir.mkdir(download_dir, 0755)
-      
-      # started_at と ended_at により期間を決定
-      today = Date.today
-      started_at = today - 14
-      ended_at = today - 7
 
       broadcasters.each { |broadcaster_name|
         # ユーザー名からユーザーIDを引く
